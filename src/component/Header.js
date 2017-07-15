@@ -7,10 +7,10 @@ import ViewModule from 'material-ui/svg-icons/action/view-module';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { white } from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem'
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types';
 
-import {  blue600 } from 'material-ui/styles/colors';
+
 class Header extends Component {
 
 
@@ -57,7 +57,9 @@ class Header extends Component {
                 targetOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
 
-                <MenuItem primaryText="Sign Out" ></MenuItem>
+                <MenuItem primaryText="Sign Out" 
+                containerElement={<Link to="/"></Link>}
+                ></MenuItem>
               </IconMenu>
             </div>
           }

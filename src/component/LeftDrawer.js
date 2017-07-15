@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
-import { Link } from 'react-router-dom';
+
 import { spacing, typography } from 'material-ui/styles';
 import { white, blue600 } from 'material-ui/styles/colors';
 import manImg from '../img/pao.gif'
-import backImg from '../img/material_bg.png'
 
+
+import {  Link } from 'react-router-dom'
 
 
 const LeftDrawer = (props) => {
-  let {open} = props;
+  let { open } = props;
   const style = {
     logo: {
       cursor: 'pointer',
@@ -31,7 +32,7 @@ const LeftDrawer = (props) => {
     avatar: {
       div: {
         padding: '15px 0 20px 15px',
-        backgroundImage: 'url(' + require('../img/material_bg.png')  + ')',
+        backgroundImage: 'url(' + require('../img/material_bg.png') + ')',
         height: 45
       },
       icon: {
@@ -63,21 +64,30 @@ const LeftDrawer = (props) => {
         <span style={style.avatar.span}>{props.username}</span>
       </div>
       <div>
+      
+          <div>
+            {props.menus.map((menu, index) =>
+              <MenuItem key={index}
+                style={style.menuItem}
+                primaryText={menu.text}
+                leftIcon={menu.icon}
+                containerElement={<Link to={menu.link}></Link>}
+              > 
+              </MenuItem>)}
 
-        {props.menus.map((menu, index) =>
-          <MenuItem key={index}
-            style={style.menuItem}
-            primaryText={menu.text}
-            leftIcon={menu.icon}
-          ></MenuItem>
 
-        )}
+          </div>
+
+    
+
+
       </div>
     </Drawer>
 
   );
 
 }
+
 
 LeftDrawer.protoTypes = {
   open: PropTypes.bool,
