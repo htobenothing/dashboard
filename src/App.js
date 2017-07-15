@@ -5,7 +5,7 @@ import withWidth from 'material-ui/utils/withWidth';
 import PropTypes from 'prop-types';
 import ThemeDefault from './theme-default'
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
 
 import LoginPage from './container/LoginPage';
 import MainSystem from './container/MainSystem'
@@ -19,10 +19,10 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
         <Router>
-          <div>
+          <Switch>
             <Route path="/" exact component={LoginPage} ></Route>
             <Route path="/system" component={MainSystem}></Route>
-          </div>
+          </Switch>
         </Router>
       </MuiThemeProvider>
     )

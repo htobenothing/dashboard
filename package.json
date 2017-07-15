@@ -1,7 +1,9 @@
 {
     "name": "dashboard",
     "version": "0.1.0",
-    "private": true,
+    "private": false,
+     "homepage": "https://htobenothing.github.io/dashboard",
+     
     "dependencies": {
         "gh-pages": "^1.0.0",
         "material-ui": "^0.18.6",
@@ -13,7 +15,7 @@
         "react-tap-event-plugin": "^2.0.1"
     },
     "scripts": {
-        "preeploy": "npm run build",
+        "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
         "start": "react-scripts start",
         "build": "react-scripts build",
