@@ -1,10 +1,10 @@
 {
   "short_name": "DashBoard",
-  "name": "Create React App Sample",
+  "name": "Create DashBoard App",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
+      "src": "dashboard.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],

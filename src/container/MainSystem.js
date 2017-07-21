@@ -42,8 +42,8 @@ class MainSystem extends Component {
         paddingLeft: open ? paddingLeftDrawerOpen : 0
       }
     };
-    console.log("Width", this.props.width)
-    console.log("paddingleft", styles.container.paddingLeft)
+    
+
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
 
@@ -58,7 +58,7 @@ class MainSystem extends Component {
           </LeftDrawer>
 
             <div style={styles.container}>
-              <Route path="/system/" exact component={DashboardPage}></Route>
+              <Route path={process.env.PUBLIC_URL+"/system"} exact component={DashboardPage}></Route>
               
             </div>
         </div>

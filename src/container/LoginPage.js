@@ -100,7 +100,7 @@ const LoginForm = () => {
                   iconStyle={styles.checkRemember.iconStyle}
                 />
 
-                <Link to="/system">
+                <Link to={process.env.PUBLIC_URL+"/system"}>
                   <RaisedButton label="Login"
                                 primary={true}
                                 style={styles.loginBtn}/>

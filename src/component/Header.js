@@ -58,7 +58,7 @@ class Header extends Component {
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
 
                 <MenuItem primaryText="Sign Out" 
-                containerElement={<Link to="/"></Link>}
+                containerElement={<Link to={process.env.PUBLIC_URL+ "/"}></Link>}
                 ></MenuItem>
               </IconMenu>
             </div>

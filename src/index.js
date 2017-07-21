@@ -4,17 +4,27 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import store from './reducer/store';
 
-import {BrowserRouter as Router} from 'react-router-dom';
+
+
 
 injectTapEventPlugin();
 
 ReactDOM.render((
-  <Router>
-    <App />
-  </Router>
+  <Provider store={store}>
+    <Router >
+      <App />
+    </Router>
+  </Provider>
+
 )
 
-, 
-document.getElementById('root'));
+  ,
+  document.getElementById('root'));
 registerServiceWorker();
+
+
+
