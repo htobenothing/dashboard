@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import store from './reducer/store';
+import store from './reducers/store';
 
 
 
@@ -19,11 +19,8 @@ ReactDOM.render((
       <App />
     </Router>
   </Provider>
+),document.getElementById('root'));
 
-)
-
-  ,
-  document.getElementById('root'));
 registerServiceWorker();
 
 

@@ -5,6 +5,7 @@
     "homepage": "https://htobenothing.github.io/dashboard",
     "dependencies": {
         "axios": "^0.16.2",
+        "browser-cookies": "^1.1.0",
         "gh-pages": "^1.0.0",
         "history": "^4.6.3",
         "material-ui": "^0.18.6",

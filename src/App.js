@@ -18,12 +18,9 @@ class App extends Component {
     console.log("go to app")
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
-
+          
           <Switch>
-        
-            <Route path={process.env.PUBLIC_URL+"/"} exact component={LoginPage} ></Route>
-            <Route path={process.env.PUBLIC_URL+"/system"} component={MainSystem}></Route>
-            
+            <LoginPage></LoginPage>
           </Switch>
 
       </MuiThemeProvider>
@@ -35,5 +32,11 @@ App.PropTypes = {
   children: PropTypes.element,
   width: PropTypes.number,
 }
+
+
+
+
 export default withWidth()(App);
 
+            // <Route path={process.env.PUBLIC_URL+"/"} exact component={LoginPage} ></Route>
+            // <Route path={process.env.PUBLIC_URL+"/system"} component={MainSystem}></Route>

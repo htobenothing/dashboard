@@ -2,16 +2,16 @@ import {LOGIN_SUBMITTED,LOGIN_SUCCED,LOGIN_FAILED} from '../actions/constants'
 
 const initState ={
   isLoading:false,
-  isLoaded:false,
-  
   username:null,
+  password:null,
 }
 
 export default function(state=initState,action){
 
   switch (action.type) {
     case LOGIN_SUBMITTED:
-      state= {
+    console.log("in login ")  
+    state= {
         ...state,
         isLoading:true
       }
