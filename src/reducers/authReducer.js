@@ -2,34 +2,35 @@ import {LOGIN_SUBMITTED,LOGIN_SUCCED,LOGIN_FAILED} from '../actions/constants'
 
 const initState ={
   isLoading:false,
-  username:null,
-  password:null,
+  isAuthenticated:localStorage.getItem('token') ?true:false,
+  errorMessage:"",
 }
 
 export default function(state=initState,action){
 
   switch (action.type) {
     case LOGIN_SUBMITTED:
-    console.log("in login ")  
+     
     state= {
         ...state,
-        isLoading:true
+        isLoading:true,
+        isAuthenticated:false,
       }
       break;
     case LOGIN_SUCCED:
       state = {
         ...state,
         isLoading:false,
-        isLoaded:false,
-        username:action.payload.username
+        isAuthenticated:true,
+        errorMessage:"",
       }
       break;
     case LOGIN_FAILED:
       state = {
         ...state,
         isLoading:false,
-        isLoaded:false,
-        username:null,
+        isAuthenticated:false,
+        errorMessage:action.payload
       }
       break;
   

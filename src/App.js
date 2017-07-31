@@ -5,12 +5,11 @@ import withWidth from 'material-ui/utils/withWidth';
 import PropTypes from 'prop-types';
 import ThemeDefault from './theme-default'
 
-import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
-
-import LoginPage from './container/LoginPage';
-import MainSystem from './container/MainSystem';
-import {connect} from 'react-redux';
-
+import { Switch, Route } from 'react-router-dom';
+import LoginPage from './container/public/LoginPage';
+import MainSystem from './container/private/MainSystem';
+import AboutPage from './container/public/AboutPage'
+import HomePage from './container/public/HomePage'
 
 class App extends Component {
 
@@ -18,10 +17,13 @@ class App extends Component {
     console.log("go to app")
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
-          
-          <Switch>
-            <LoginPage></LoginPage>
-          </Switch>
+
+        <Switch>
+          <Route path="/" exact component={HomePage}></Route>
+          <Route path="/about" component={AboutPage}></Route>
+          <Route path="/login" component={LoginPage}></Route>
+          <Route path="/main" component={MainSystem}></Route>
+        </Switch>
 
       </MuiThemeProvider>
     )

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import LeftDrawer from '../component/LeftDrawer'
-import Header from '../component/Header'
+import LeftDrawer from '../../component/LeftDrawer'
+import Header from '../../component/Header'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth';
 import PropTypes from 'prop-types';
-import ThemeDefault from '../theme-default'
-import Data from '../data'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ThemeDefault from '../../theme-default'
+import Data from '../../data'
+import {  Route } from 'react-router-dom';
 import DashboardPage from './DashboardPage'
 
 class MainSystem extends Component {
@@ -58,8 +58,8 @@ class MainSystem extends Component {
           </LeftDrawer>
 
             <div style={styles.container}>
-              <Route path={process.env.PUBLIC_URL+"/system"} exact component={DashboardPage}></Route>
-              
+              <Route path={process.env.PUBLIC_URL+"/main"+"/system"} exact component={DashboardPage}></Route>
+
             </div>
         </div>
 

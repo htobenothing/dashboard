@@ -8,7 +8,7 @@ import { grey500, white } from 'material-ui/styles/colors';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import Help from 'material-ui/svg-icons/action/help';
 import TextField from 'material-ui/TextField';
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import ThemeDefault from '../theme-default';
 
 
@@ -20,6 +20,7 @@ class LoginForm extends Component {
     this.state={
       username:"",
       password:"",
+      redirectToReferrer:false,
     }
 
   }
@@ -40,6 +41,13 @@ class LoginForm extends Component {
     const password = this.state.password
     const creds = {username:username,password:password}
     this.props.onLoginClick(creds)
+
+    this.setState({redirectToReferrer:this.props.isRedirect})
+    console.log('redirect',this.state.redirectToReferrer)
+  }
+
+  handleGoogleLogin(){
+    this.props.onGoogleLogin()
   }
 
   render() {
@@ -104,6 +112,9 @@ class LoginForm extends Component {
     };
 
 
+    if(this.state.redirectToReferrer){
+      return <Redirect to="/dashboard"></Redirect>
+    }
 
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
@@ -135,10 +146,7 @@ class LoginForm extends Component {
                     style={styles.checkRemember.style}
                     labelStyle={styles.checkRemember.labelStyle}
                     iconStyle={styles.checkRemember.iconStyle}
-                    
                   />
-
-                  
                     <RaisedButton label="Login"
                       primary={true}
                       style={styles.loginBtn}
@@ -169,10 +177,10 @@ class LoginForm extends Component {
 
             <div style={styles.buttonsDiv}>
               
-              <Link to="/" style={{ ...styles.btn, ...styles.btnGoogle }}>
-                <i className="fa fa-google-plus fa-lg" />
+              <RaisedButton onClick={this.handleGoogleLogin}>
+                
                 <span style={styles.btnSpan}>Log in with Google</span>
-              </Link>
+              </RaisedButton>
             </div>
           </div>
         </div>
