@@ -4,13 +4,14 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Checkbox from 'material-ui/Checkbox';
-import { grey500, white } from 'material-ui/styles/colors';
+
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import Help from 'material-ui/svg-icons/action/help';
 import TextField from 'material-ui/TextField';
 import { Link,Redirect } from 'react-router-dom';
 import ThemeDefault from '../theme-default';
 
+import styles from './loginStyles'
 
 
 class LoginForm extends Component {
@@ -21,16 +22,24 @@ class LoginForm extends Component {
       username:"",
       password:"",
       redirectToReferrer:false,
+      errormsg:"",
     }
 
   }
 
+
   handleUserNameChange(e){
-    this.setState(
-      {username:e.target.value},
-    )
+    if (!e.target.value){
+      this.setState({username:e.target.value})
+      this.setState({errormsg:"please enter the name"})
+    }else{
+      this.setState({errormsg:""})
+      this.setState({username:e.target.value})
+    }
+
   }
   handlePasswordChange(e){
+    
     this.setState(
       {password:e.target.value},
     )
@@ -52,64 +61,7 @@ class LoginForm extends Component {
 
   render() {
 
-    const styles = {
-      loginContainer: {
-
-        maxWidth: 400,
-        height: 'auto',
-        position: 'absolute',
-        top: '20%',
-        left: 0,
-        right: 0,
-        margin: 'auto'
-      },
-      paper: {
-        padding: 20,
-        overflow: 'auto'
-      },
-      buttonsDiv: {
-        textAlign: 'center',
-        padding: 10
-      },
-      flatButton: {
-        color: grey500
-      },
-      checkRemember: {
-        style: {
-          float: 'left',
-          maxWidth: 180,
-          paddingTop: 5
-        },
-        labelStyle: {
-          color: grey500
-        },
-        iconStyle: {
-          color: grey500,
-          borderColor: grey500,
-          fill: grey500
-        }
-      },
-      loginBtn: {
-        float: 'right'
-      },
-      btn: {
-        background: '#4f81e9',
-        color: white,
-        padding: 7,
-        borderRadius: 2,
-        margin: 2,
-        fontSize: 13
-      },
-      btnFacebook: {
-        background: '#4f81e9'
-      },
-      btnGoogle: {
-        background: '#e14441'
-      },
-      btnSpan: {
-        marginLeft: 5
-      },
-    };
+    
 
 
     if(this.state.redirectToReferrer){
@@ -129,8 +81,11 @@ class LoginForm extends Component {
                   floatingLabelText="E-mail"
                   fullWidth={true}
                   value= {this.state.username}
+                  errorText = {this.state.errormsg}
+                  onBlur={this.handleUserNameChange.bind(this)}
                   onChange={this.handleUserNameChange.bind(this)}
                 />
+                
                 <TextField
                   hintText="Password"
                   floatingLabelText="Password"

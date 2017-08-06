@@ -27,3 +27,15 @@ export const DEFAULT_ENDPOINT={
   authenToken:  rootApi+"/token-auth/"  
 
 }
+
+export const GoogleOAuth = {
+  endpoint: "https://accounts.google.com/o/oauth2/v2/auth",
+  params:{  
+    scope:"https://www.googleapis.com/auth/drive.metadata.readonly",
+    include_granted_scopes:true,
+    redirect_uri:"http://localhost:3000",
+    response_type:"token",
+    client_id:"1039803419205-otllnausstkpuoq3m8s8264rs55f7lu4.apps.googleusercontent.com",
+  }
+
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Login from '../../component/Login';
 import {Login_Submitted} from '../../actions/authActions'
-
+import {} from '../../actions/oAuthSignActions'
 
 export class LoginForm extends Component {
   
@@ -11,7 +11,7 @@ export class LoginForm extends Component {
       <Login
         onLoginClick={creds=>this.props.loginSubmit(creds)}
         isRedirect = {this.props.isAuthenticated}
-        onGoogleLogin={this.props.googleLogIn()}
+        onGoogleLogin={this.props.oAuthGoogleLogin()}
       ></Login>
 
     );
@@ -26,8 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
   loginSubmit: (creds) => {
     dispatch(Login_Submitted(creds));
   },
-  googleLogIn:()=>{
-    
+  oAuthGoogleLogin:()=>{
+    dispatch()
   }
 
 
