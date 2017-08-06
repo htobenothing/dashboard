@@ -1,8 +1,10 @@
-import { OAUTH_SIGNIN_FAILED, OAUTH_SIGNIN_SUCCED, OAUTH_SIGNIN_START, LOGIN_SUBMITTED, LOGIN_SUCCED } from './constants'
+import { LOGIN_SUBMITTED, LOGIN_SUCCED,LOGIN_FAILED } from './constants'
 import { GoogleOAuth } from "./constants"
 import { convertParamsToStr } from '../utils/params2Str'
 import axios from 'axios'
 import { getParamsFromURL } from '../utils/params2Str'
+import {redirectTo} from '../actions/routerAction'
+
 
 
 export function oAuthSign_Start() {
@@ -11,8 +13,6 @@ export function oAuthSign_Start() {
 
     dispatch({ type: LOGIN_SUBMITTED })
     oAuthSignin()
-
-
   }
 }
 
@@ -21,20 +21,21 @@ export function oAuthSign_Start() {
 
 export function oAuthSign_Succed(queryString) {
 
-  let params = getParamsFromURL(queryString)
-  for (let key in params) {
-    localStorage.setItem(key, params[key])
+  return dispatch=>{
+    let params = getParamsFromURL(queryString)
+    for (let key in params) {
+      localStorage.setItem(key, params[key])
+    }
+    dispatch({ type: LOGIN_SUCCED, payload: "" })
+    dispatch(redirectTo("/main/dasboard"))
   }
+  
 
-  for (let key in params) {
-    localStorage.setItem(key, params[key])
-  }
 
-  return ({ type: OAUTH_SIGNIN_SUCCED, payload: "" })
 }
 
 export function oAuthSign_Failed(error) {
-  return ({ type: OAUTH_SIGNIN_FAILED, payload: error })
+  return ({ type: LOGIN_FAILED, payload: error })
 }
 
 

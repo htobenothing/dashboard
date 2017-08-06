@@ -12,6 +12,7 @@ export default function(state=initState,action){
         ...state,
         url:action.payload
       }
+      console.log(action.payload)
       window.location = action.payload
       break;
   

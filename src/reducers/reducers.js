@@ -8,7 +8,6 @@ import RouterReducer from './routReducer'
 const reducer = combineReducers({
   user:UserReducer,
   auth:AuthReducer,
-  oauth:OAuthReducer,
   routing:RouterReducer,
 })
 

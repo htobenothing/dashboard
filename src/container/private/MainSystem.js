@@ -32,13 +32,17 @@ class MainSystem extends Component {
     if (this.props.width !== nextProps.width) {
       this.setState({ open: nextProps.width === LARGE })
     }
+
+
+
     
   }
 
   componentDidMount() {
-    
-    let queryString = window.location.hash.substring(1);
-    this.props.OAuth_Succed(queryString)
+    if(!localStorage.getItem('access_token')){
+      let queryString = window.location.hash.substring(1);
+      this.props.OAuth_Succed(queryString)
+    }
 
   }
   
@@ -47,15 +51,18 @@ class MainSystem extends Component {
     let { open } = this.state
     const paddingLeftDrawerOpen = 236;
     let styles = {
-      header: {
-        paddingLeft: open ? paddingLeftDrawerOpen : 0
-      },
+      // header: {
+      //   paddingLeft: open ? paddingLeftDrawerOpen : 0
+      // },
       container: {
         margin: '80px 20px 20px 15px',
-        paddingLeft: open ? paddingLeftDrawerOpen : 0
+        // paddingLeft: open ? paddingLeftDrawerOpen : 0
       }
     };
     
+    function handleRequestChange(){
+      this.setState({open:false})
+    }
 
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
@@ -67,7 +74,9 @@ class MainSystem extends Component {
           <LeftDrawer
             open={this.state.open}
             menus={Data.menus}
-            username={Data.username}>
+            username={Data.username}
+            handleRequestChange={(open)=>this.setState({open:false})}
+            >
           </LeftDrawer>
 
             <div style={styles.container}>
@@ -91,9 +100,6 @@ const mapDispatchToProps = (dispatch) => ({
   OAuth_Succed: (queryString) => {
     dispatch(oAuthSign_Succed(queryString));
   },
-  redirect:()=>{
-    dispatch()
-  }
 });
 
 const mapStateToProps = (state, ownProps) => ({

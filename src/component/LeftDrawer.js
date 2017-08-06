@@ -13,7 +13,8 @@ import {  Link } from 'react-router-dom'
 
 
 const LeftDrawer = (props) => {
-  let { open } = props;
+
+  let { open,handleRequestChange } = props;
   const style = {
     logo: {
       cursor: 'pointer',
@@ -52,9 +53,10 @@ const LeftDrawer = (props) => {
   }
   return (
     <Drawer
-      docked={true}
+      docked={false}
       open={open}
-      style={style.drawer}>
+      style={style.drawer}
+      onRequestChange={(open)=>handleRequestChange(open)}>
       <div style={style.logo}>Material Admin</div>
       <div style={style.avatar.div}>
         <Avatar
@@ -74,8 +76,6 @@ const LeftDrawer = (props) => {
                 containerElement={<Link to={menu.link}></Link>}
               > 
               </MenuItem>)}
-
-
           </div>
 
     

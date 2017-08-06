@@ -12,7 +12,7 @@ export function Login_Submitted(creds) {
     axios.post(DEFAULT_ENDPOINT.authenToken,creds)
         .then(resp=>{
           dispatch(Login_Succed())
-          localStorage.setItem('token',resp.token)
+          localStorage.setItem('access_token',resp.token)
 
           dispatch(redirectTo("/main/dasboard"))
         })
