@@ -2,38 +2,23 @@ import { LOGIN_SUBMITTED, LOGIN_SUCCED, LOGIN_FAILED, DEFAULT_ENDPOINT } from ".
 import { redirectTo } from './routerAction'
 import React from 'react'
 import ApiUtils from '../utils/apiUtils'
-
+import axios from 'axios'
 export function Login_Submitted(creds) {
 
 
   return dispatch => {
 
-    let config = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: creds.username,
-        password: creds.password,
-      })
-    }
-
     dispatch({ type: LOGIN_SUBMITTED })
+    axios.post(DEFAULT_ENDPOINT.authenToken,creds)
+        .then(resp=>{
+          dispatch(Login_Succed())
+          localStorage.setItem('token',resp.token)
 
-    fetch(DEFAULT_ENDPOINT.authenToken, config)
-      .then(ApiUtils.checkStatus)
-      .then(resp => resp.json())
-      .then(respJson =>{
-        dispatch(Login_Succed())
-        localStorage.setItem('token',respJson.token)
-
-        dispatch(redirectTo("/dashboard"))
-      })
-      .catch(error => {
-        dispatch(Login_Failed(error))
-      })
+          dispatch(redirectTo("/main/dasboard"))
+        })
+        .catch(err=>{
+          dispatch(Login_Failed(err))
+        })
   }
 }
 

@@ -55,14 +55,11 @@ class LoginForm extends Component {
     console.log('redirect',this.state.redirectToReferrer)
   }
 
-  handleGoogleLogin(){
+  handleGoogleLoginClick(){
     this.props.onGoogleLogin()
   }
 
   render() {
-
-    
-
 
     if(this.state.redirectToReferrer){
       return <Redirect to="/dashboard"></Redirect>
@@ -132,9 +129,11 @@ class LoginForm extends Component {
 
             <div style={styles.buttonsDiv}>
               
-              <RaisedButton onClick={this.handleGoogleLogin}>
-                
-                <span style={styles.btnSpan}>Log in with Google</span>
+              <RaisedButton 
+                primary={true}
+                onClick={()=>this.handleGoogleLoginClick()}
+              >
+              <span>Google Login</span>
               </RaisedButton>
             </div>
           </div>

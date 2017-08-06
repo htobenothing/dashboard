@@ -31,10 +31,12 @@ export const DEFAULT_ENDPOINT={
 export const GoogleOAuth = {
   endpoint: "https://accounts.google.com/o/oauth2/v2/auth",
   params:{  
-    scope:"https://www.googleapis.com/auth/drive.metadata.readonly",
+    scope:"profile",
     include_granted_scopes:true,
-    redirect_uri:"http://localhost:3000",
+    redirect_uri:"http://localhost:3000/main",
+    state:LOGIN_SUCCED,
     response_type:"token",
+    prompt:"consent",
     client_id:"1039803419205-otllnausstkpuoq3m8s8264rs55f7lu4.apps.googleusercontent.com",
   }
 

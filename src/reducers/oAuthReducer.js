@@ -1,4 +1,4 @@
-import {LOGIN_SUBMITTED,LOGIN_SUCCED,LOGIN_FAILED} from '../actions/constants'
+import {OAUTH_SIGNIN_START,OAUTH_SIGNIN_SUCCED,OAUTH_SIGNIN_FAILED} from '../actions/constants'
 
 const initState ={
   isLoading:false,
@@ -6,36 +6,33 @@ const initState ={
   errorMessage:"",
 }
 
-export default function(state=initState,action){
+export default function (state=initState,action) {
 
   switch (action.type) {
-    case LOGIN_SUBMITTED:
-     
-    state= {
+    case OAUTH_SIGNIN_START:
+      state = {
         ...state,
         isLoading:true,
         isAuthenticated:false,
       }
       break;
-    case LOGIN_SUCCED:
-      state = {
+    case OAUTH_SIGNIN_SUCCED:
+      state ={
         ...state,
         isLoading:false,
         isAuthenticated:true,
-        errorMessage:"",
       }
       break;
-    case LOGIN_FAILED:
-      state = {
+    case OAUTH_SIGNIN_FAILED:
+      state={
         ...state,
         isLoading:false,
         isAuthenticated:false,
-        errorMessage:action.payload
+        errorMessage:action.payload,
       }
-      break;
-  
-    default:    
+      break;      
+    default:
       break;
   }
-  return state
+  return state;
 }

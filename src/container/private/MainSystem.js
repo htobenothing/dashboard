@@ -9,6 +9,11 @@ import Data from '../../data'
 import {  Route } from 'react-router-dom';
 import DashboardPage from './DashboardPage'
 
+import {getParamsFromURL } from '../../utils/params2Str'
+import { oAuthSign_Succed} from '../../actions/oAuthSignActions'
+import {connect } from 'react-redux'
+
+
 class MainSystem extends Component {
 
   constructor(props) {
@@ -27,10 +32,18 @@ class MainSystem extends Component {
     if (this.props.width !== nextProps.width) {
       this.setState({ open: nextProps.width === LARGE })
     }
+    
   }
 
+  componentDidMount() {
+    
+    let queryString = window.location.hash.substring(1);
+    this.props.OAuth_Succed(queryString)
 
+  }
+  
   render() {
+    
     let { open } = this.state
     const paddingLeftDrawerOpen = 236;
     let styles = {
@@ -73,5 +86,23 @@ MainSystem.PropTypes = {
   children: PropTypes.element,
   width: PropTypes.number,
 }
-export default withWidth()(MainSystem);
+
+const mapDispatchToProps = (dispatch) => ({
+  OAuth_Succed: (queryString) => {
+    dispatch(oAuthSign_Succed(queryString));
+  },
+  redirect:()=>{
+    dispatch()
+  }
+});
+
+const mapStateToProps = (state, ownProps) => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withWidth()(MainSystem));
+
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Login from '../../component/Login';
 import {Login_Submitted} from '../../actions/authActions'
-import {} from '../../actions/oAuthSignActions'
+import {oAuthSign_Start} from '../../actions/oAuthSignActions'
 
 export class LoginForm extends Component {
   
@@ -11,7 +11,7 @@ export class LoginForm extends Component {
       <Login
         onLoginClick={creds=>this.props.loginSubmit(creds)}
         isRedirect = {this.props.isAuthenticated}
-        onGoogleLogin={this.props.oAuthGoogleLogin()}
+        onGoogleLogin={()=>this.props.oAuthGoogleLogin()}
       ></Login>
 
     );
@@ -19,7 +19,8 @@ export class LoginForm extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  auth: state.auth
+  auth: state.auth,
+  // oauth:state.oauth
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,8 +28,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(Login_Submitted(creds));
   },
   oAuthGoogleLogin:()=>{
-    dispatch()
-  }
+    console.log("oauth login")
+    dispatch(oAuthSign_Start())
+  },
 
 
 });
