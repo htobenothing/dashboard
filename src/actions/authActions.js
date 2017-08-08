@@ -1,4 +1,5 @@
 import { LOGIN_SUBMITTED, LOGIN_SUCCED, LOGIN_FAILED, DEFAULT_ENDPOINT } from "./constants"
+import * as C from './constants'
 import { redirectTo } from './routerAction'
 import React from 'react'
 import ApiUtils from '../utils/apiUtils'
@@ -30,4 +31,32 @@ export function Login_Succed() {
   return { type: LOGIN_SUCCED }
 }
 
+export function SignOut_Start(){
+  return dispatch=>{
+
+    console.log("sign out")
+    dispatch({type:C.SIGNOUT_START})
+
+    localStorage.removeItem("access_token")
+    
+    console.log("access_token", !localStorage.getItem("access_token"))
+    if (!localStorage.getItem("access_token")){
+
+      dispatch(SignOut_Succed())
+      window.location = "/login"
+    }else{
+      dispatch(SignOut_Failed())
+    }
+  }
+   
+  
+}
+
+export function SignOut_Succed(){
+  return({type:C.SIGNOUT_SUCCED})
+}
+
+export function SignOut_Failed(){
+  return ({type:C.SIGNOUT_FAILED})
+}
 

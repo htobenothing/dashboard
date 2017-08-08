@@ -12,6 +12,7 @@ export function oAuthSign_Start() {
   return dispatch => {
 
     dispatch({ type: LOGIN_SUBMITTED })
+
     oAuthSignin()
   }
 }
@@ -25,6 +26,8 @@ export function oAuthSign_Succed(queryString) {
     let params = getParamsFromURL(queryString)
     for (let key in params) {
       localStorage.setItem(key, params[key])
+ 
+
     }
     dispatch({ type: LOGIN_SUCCED, payload: "" })
     dispatch(redirectTo("/main/dasboard"))
@@ -40,6 +43,7 @@ export function oAuthSign_Failed(error) {
 
 
 function oAuthSignin() {
+  window.open('/')
   // Google's OAuth 2.0 endpoint for requesting an access token
   var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
 
@@ -53,8 +57,8 @@ function oAuthSignin() {
     'client_id': '1039803419205-otllnausstkpuoq3m8s8264rs55f7lu4.apps.googleusercontent.com',
     'redirect_uri': 'http://localhost:3000/main',
     'response_type': 'token',
-    'scope': 'profile',
-    'include_granted_scopes': 'true',
+    'scope': 'email',
+    'include_granted_scopes': 'false',
     'state': LOGIN_SUCCED
   };
 

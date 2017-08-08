@@ -9,6 +9,9 @@ export const OAUTH_SIGNIN_START = "OAUTH_SIGNIN_START"
 export const OAUTH_SIGNIN_SUCCED = "OAUTH_SIGNIN_SUCCED"
 export const OAUTH_SIGNIN_FAILED = "OAUTH_SIGNIN_FAILED"
 
+export const SIGNOUT_START ="SIGNOUT_START"
+export const SIGNOUT_SUCCED= "SIGNOUT_SUCCED"
+export const SIGNOUT_FAILED="SIGNOUT_FAILED"
 
 export const FETCH_USER = "FETCH_USER"
 export const FETCH_USER_SUCCED ="FETCH_USER_SUCCED"
@@ -31,7 +34,7 @@ export const DEFAULT_ENDPOINT={
 export const GoogleOAuth = {
   endpoint: "https://accounts.google.com/o/oauth2/v2/auth",
   params:{  
-    scope:"profile",
+    scope:"email",
     include_granted_scopes:true,
     redirect_uri:"http://localhost:3000/main",
     state:LOGIN_SUCCED,

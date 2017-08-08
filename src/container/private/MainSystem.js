@@ -7,10 +7,11 @@ import PropTypes from 'prop-types';
 import ThemeDefault from '../../theme-default'
 import Data from '../../data'
 import {  Route } from 'react-router-dom';
-import DashboardPage from './DashboardPage'
+import DashboardPage from './DashboardPage';
 
-import {getParamsFromURL } from '../../utils/params2Str'
-import { oAuthSign_Succed} from '../../actions/oAuthSignActions'
+import {getParamsFromURL } from '../../utils/params2Str';
+import { oAuthSign_Succed} from '../../actions/oAuthSignActions';
+import {SignOut_Start } from '../../actions/authActions'
 import {connect } from 'react-redux'
 
 
@@ -69,7 +70,9 @@ class MainSystem extends Component {
 
         <div>
           <Header styles={styles.header}
-            handleChangeReqNav={this.handleChangeReqNav.bind(this)}></Header>
+            handleChangeReqNav={this.handleChangeReqNav.bind(this)}
+            handleSignOut={this.props.handleSignOut}
+          ></Header>
 
           <LeftDrawer
             open={this.state.open}
@@ -100,6 +103,10 @@ const mapDispatchToProps = (dispatch) => ({
   OAuth_Succed: (queryString) => {
     dispatch(oAuthSign_Succed(queryString));
   },
+  handleSignOut:()=>{
+    console.log("Signout")
+    dispatch(SignOut_Start())
+  }
 });
 
 const mapStateToProps = (state, ownProps) => ({

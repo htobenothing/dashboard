@@ -6,10 +6,11 @@ import IconMenu from 'material-ui/IconMenu';
 import ViewModule from 'material-ui/svg-icons/action/view-module';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { white } from 'material-ui/styles/colors';
+import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types';
-
+import ActionAccountCircle from 'material-ui/svg-icons//action/account-circle'
 
 class Header extends Component {
 
@@ -57,9 +58,9 @@ class Header extends Component {
                 targetOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
 
-                <MenuItem primaryText="Sign Out" 
-                containerElement={<Link to={process.env.PUBLIC_URL+ "/"}></Link>}
-                ></MenuItem>
+                <MenuItem onTouchTap={this.props.handleSignOut} primaryText="Sign Out"></MenuItem>
+
+
               </IconMenu>
             </div>
           }
