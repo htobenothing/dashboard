@@ -3,7 +3,13 @@ import { connect } from 'react-redux'
 import Login from '../../component/Login';
 import { Login_Submitted } from '../../actions/authActions'
 import { oAuthSign_Start } from '../../actions/oAuthSignActions'
-import Loading from '../../component/loading'
+import Loading from '../../component/Loading'
+
+const styles={
+  loading:{
+
+  }
+}
 
 export class LoginForm extends Component {
   constructor(props, context) {
@@ -19,7 +25,7 @@ export class LoginForm extends Component {
           onGoogleLogin={() => this.props.oAuthGoogleLogin()}
         >
         </Login>
-        
+
         { this.props.auth.isLoading && 
           <Loading></Loading>
         }

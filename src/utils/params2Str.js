@@ -45,25 +45,3 @@ export function getParamsFromURL(queryString){
 }
 
 
-/* Validate the access token received on the query string. */
-function exchangeOAuth2Token(params) {
-  var oauth2Endpoint = 'https://www.googleapis.com/oauth2/v3/tokeninfo';
-  if (params['access_token']) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', oauth2Endpoint + '?access_token=' + params['access_token']);
-    xhr.onreadystatechange = function (e) {
-      var response = JSON.parse(xhr.response);
-      // Verify that the 'aud' property in the response matches YOUR_CLIENT_ID.
-      if (xhr.readyState === 4 &&
-          xhr.status === 200 &&
-          response['aud'] &&
-          response['aud'] === "YOUR_CLIENT_ID") {
-        localStorage.setItem('oauth2-test-params', JSON.stringify(params) );
-      } else if (xhr.readyState === 4) {
-        console.log('There was an error processing the token, another ' +
-                    'response was returned, or the token was invalid.')
-      }
-    };
-    xhr.send(null);
-  }
-}
