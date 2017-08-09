@@ -8,9 +8,9 @@ import ThemeDefault from '../../theme-default'
 import Data from '../../data'
 import { Route } from 'react-router-dom';
 import DashboardPage from './DashboardPage';
-
-import { getParamsFromURL } from '../../utils/params2Str';
-import { oAuthSign_Succed } from '../../actions/oAuthSignActions';
+import GalleryPage from './GalleryPage'
+// import { getParamsFromURL } from '../../utils/params2Str';
+// import { oAuthSign_Succed } from '../../actions/oAuthSignActions';
 import { SignOut_Start } from '../../actions/authActions'
 import { connect } from 'react-redux'
 
@@ -31,9 +31,9 @@ class MainSystem extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.width !== nextProps.width) {
-      this.setState({ open: nextProps.width === LARGE })
-    }
+    // if (this.props.width !== nextProps.width) {
+    //   this.setState({ open: nextProps.width === LARGE })
+    // }
 
   }
 
@@ -47,7 +47,7 @@ class MainSystem extends Component {
 
   render() {
 
-    let { open } = this.state
+    // let { open } = this.state
     const paddingLeftDrawerOpen = 236;
     let styles = {
       // header: {
@@ -84,7 +84,7 @@ class MainSystem extends Component {
 
           <div style={styles.container}>
             <Route path={process.env.PUBLIC_URL + "/main" + "/system"} exact component={DashboardPage}></Route>
-
+            <Route path={process.env.PUBLIC_URL + "/main" + "/gallery"} exact component={GalleryPage}></Route>
           </div>
         </div>
 
