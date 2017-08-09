@@ -60,10 +60,10 @@ const LeftDrawer = (props) => {
       <div style={style.logo}>Material Admin</div>
       <div style={style.avatar.div}>
         <Avatar
-          src={manImg}
+          src={props.imageUrl}
           size={50}
           style={style.avatar.icon} ></Avatar>
-        <span style={style.avatar.span}>{props.username}</span>
+          <span style={style.avatar.span}>{props.username}</span>
       </div>
       <div>
       

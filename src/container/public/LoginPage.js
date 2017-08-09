@@ -1,34 +1,50 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Login from '../../component/Login';
-import {Login_Submitted} from '../../actions/authActions'
-import {oAuthSign_Start} from '../../actions/oAuthSignActions'
+import { Login_Submitted } from '../../actions/authActions'
+import { oAuthSign_Start } from '../../actions/oAuthSignActions'
+import Loading from '../../component/loading'
 
 export class LoginForm extends Component {
-  
+  constructor(props, context) {
+    super(props, context);
+  }
+
   render() {
     return (
-      <Login
-        onLoginClick={creds=>this.props.loginSubmit(creds)}
-        isRedirect = {this.props.isAuthenticated}
-        onGoogleLogin={()=>this.props.oAuthGoogleLogin()}
-      ></Login>
+      <div>
+        <Login
+          onLoginClick={(creds) => this.props.loginSubmit(creds)}
+          isRedirect={this.props.auth.isAuthenticated}
+          onGoogleLogin={() => this.props.oAuthGoogleLogin()}
+        >
+        </Login>
+        { this.props.auth.isLoading && 
+          <Loading></Loading>
+        }
+        
+      </div>
+
+
 
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  auth: state.auth,
-  // oauth:state.oauth
-});
+
+
+const mapStateToProps = (state, ownProps) => {
+
+  return {
+    auth: state.auth,
+  }
+};
 
 const mapDispatchToProps = (dispatch) => ({
   loginSubmit: (creds) => {
     dispatch(Login_Submitted(creds));
   },
-  oAuthGoogleLogin:()=>{
-    console.log("oauth login")
+  oAuthGoogleLogin: () => {
     dispatch(oAuthSign_Start())
   },
 

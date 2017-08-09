@@ -14,7 +14,7 @@ import HomePage from './container/public/HomePage'
 class App extends Component {
 
   render() {
-    console.log("go to app")
+
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
 

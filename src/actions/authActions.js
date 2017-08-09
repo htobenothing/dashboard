@@ -12,10 +12,10 @@ export function Login_Submitted(creds) {
     dispatch({ type: LOGIN_SUBMITTED })
     axios.post(DEFAULT_ENDPOINT.authenToken,creds)
         .then(resp=>{
-          dispatch(Login_Succed())
+          dispatch(Login_Succed(creds))
           localStorage.setItem('access_token',resp.token)
 
-          dispatch(redirectTo("/main/dasboard"))
+          // dispatch(redirectTo("/main/dasboard"))
         })
         .catch(err=>{
           dispatch(Login_Failed(err))
@@ -27,8 +27,8 @@ export function Login_Failed(error) {
   return ({ type: LOGIN_FAILED, payload: error })
 }
 
-export function Login_Succed() {
-  return { type: LOGIN_SUCCED }
+export function Login_Succed(user) {
+  return { type: LOGIN_SUCCED,payload:user }
 }
 
 export function SignOut_Start(){

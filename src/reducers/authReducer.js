@@ -2,7 +2,9 @@ import { LOGIN_SUBMITTED, LOGIN_SUCCED, LOGIN_FAILED } from '../actions/constant
 import * as C from '../actions/constants'
 const initState = {
   isLoading: false,
-  isAuthenticated: localStorage.getItem('access-token') ? true : false,
+  // isAuthenticated: localStorage.getItem('access-token') ? true : false,
+  isAuthenticated:false,
+  user:{},
   errorMessage: "",
 }
 
@@ -22,8 +24,9 @@ export default function (state = initState, action) {
         ...state,
         isLoading: false,
         isAuthenticated: true,
-        errorMessage: "",
+        user:action.payload,
       }
+      
       break;
     case LOGIN_FAILED:
       state = {

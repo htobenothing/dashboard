@@ -6,13 +6,13 @@ import withWidth, { LARGE } from 'material-ui/utils/withWidth';
 import PropTypes from 'prop-types';
 import ThemeDefault from '../../theme-default'
 import Data from '../../data'
-import {  Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import DashboardPage from './DashboardPage';
 
-import {getParamsFromURL } from '../../utils/params2Str';
-import { oAuthSign_Succed} from '../../actions/oAuthSignActions';
-import {SignOut_Start } from '../../actions/authActions'
-import {connect } from 'react-redux'
+import { getParamsFromURL } from '../../utils/params2Str';
+import { oAuthSign_Succed } from '../../actions/oAuthSignActions';
+import { SignOut_Start } from '../../actions/authActions'
+import { connect } from 'react-redux'
 
 
 class MainSystem extends Component {
@@ -22,6 +22,7 @@ class MainSystem extends Component {
     this.state = {
       open: false
     }
+
 
   }
 
@@ -36,19 +37,18 @@ class MainSystem extends Component {
 
 
 
-    
   }
 
   componentDidMount() {
-    if(!localStorage.getItem('access_token')){
-      let queryString = window.location.hash.substring(1);
-      this.props.OAuth_Succed(queryString)
-    }
-
+    // if (!localStorage.getItem('access_token')) {
+    //   let queryString = window.location.hash.substring(1);
+    //   this.props.OAuth_Succed(queryString)
+    // }
+        console.log("auth",this.props.auth)
   }
-  
+
   render() {
-    
+
     let { open } = this.state
     const paddingLeftDrawerOpen = 236;
     let styles = {
@@ -60,9 +60,9 @@ class MainSystem extends Component {
         // paddingLeft: open ? paddingLeftDrawerOpen : 0
       }
     };
-    
-    function handleRequestChange(){
-      this.setState({open:false})
+
+    function handleRequestChange() {
+      this.setState({ open: false })
     }
 
     return (
@@ -77,15 +77,17 @@ class MainSystem extends Component {
           <LeftDrawer
             open={this.state.open}
             menus={Data.menus}
-            username={Data.username}
-            handleRequestChange={(open)=>this.setState({open:false})}
-            >
+            imageUrl={this.props.auth.user.imageUrl}
+            username={this.props.auth.user.username}
+            email={this.props.auth.email}
+            handleRequestChange={(open) => this.setState({ open: false })}
+          >
           </LeftDrawer>
 
-            <div style={styles.container}>
-              <Route path={process.env.PUBLIC_URL+"/main"+"/system"} exact component={DashboardPage}></Route>
+          <div style={styles.container}>
+            <Route path={process.env.PUBLIC_URL + "/main" + "/system"} exact component={DashboardPage}></Route>
 
-            </div>
+          </div>
         </div>
 
 
@@ -100,10 +102,7 @@ MainSystem.PropTypes = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  OAuth_Succed: (queryString) => {
-    dispatch(oAuthSign_Succed(queryString));
-  },
-  handleSignOut:()=>{
+  handleSignOut: () => {
     console.log("Signout")
     dispatch(SignOut_Start())
   }

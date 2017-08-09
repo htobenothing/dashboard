@@ -12,7 +12,7 @@ import { Link,Redirect } from 'react-router-dom';
 import ThemeDefault from '../theme-default';
 
 import styles from './loginStyles'
-
+import Loading from '../component/loading'
 
 class LoginForm extends Component {
 
@@ -21,12 +21,15 @@ class LoginForm extends Component {
     this.state={
       username:"",
       password:"",
-      redirectToReferrer:false,
       errormsg:"",
     }
 
   }
 
+  componentDidMount() {
+    console.log("rerender")
+  }
+  
 
   handleUserNameChange(e){
     if (!e.target.value){
@@ -39,7 +42,6 @@ class LoginForm extends Component {
 
   }
   handlePasswordChange(e){
-    
     this.setState(
       {password:e.target.value},
     )
@@ -50,9 +52,6 @@ class LoginForm extends Component {
     const password = this.state.password
     const creds = {username:username,password:password}
     this.props.onLoginClick(creds)
-
-    this.setState({redirectToReferrer:this.props.isRedirect})
-    console.log('redirect',this.state.redirectToReferrer)
   }
 
   handleGoogleLoginClick(){
@@ -60,9 +59,8 @@ class LoginForm extends Component {
   }
 
   render() {
-
-    if(this.state.redirectToReferrer){
-      return <Redirect to="/dashboard"></Redirect>
+    if(this.props.isRedirect){
+      return <Redirect to="/main"></Redirect>
     }
 
     return (
