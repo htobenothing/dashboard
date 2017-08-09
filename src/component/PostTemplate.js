@@ -6,6 +6,7 @@ import DatePicker from 'material-ui/DatePicker'
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper'
 import Divider from 'material-ui/Divider'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const PostTemplacte = (props) => {
 
@@ -15,19 +16,24 @@ const PostTemplacte = (props) => {
       padding: 10
     },
     diaglog: {
+    },
+    raiseButton: {
+      margin: 5
     }
+
   }
 
   const actions = [
-    <FlatButton
-      label="Cancel"
+    <RaisedButton
+      style={styles.raiseButton}
+      label="Submit"
       primary={true}
       onTouchTap={props.handleClose}
     />,
-    <FlatButton
-      label="Submit"
-      primary={true}
-      keyboardFocused={true}
+    <RaisedButton
+      style={styles.raiseButton}
+      label="Cancel"
+      secondary= {true}
       onTouchTap={props.handleClose}
     />,
   ];
@@ -41,9 +47,8 @@ const PostTemplacte = (props) => {
       modal={true}
       open={props.isOpenTemplate}
       onRequestClose={props.handleClose}
-      style={styles.diaglog}>
-      
-      <Divider></Divider>
+      style={styles.diaglog}
+      autoScrollBodyContent={true}>
       <TextField
         hintText="Title"
         floatingLabelText="Title" />
