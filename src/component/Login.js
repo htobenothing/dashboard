@@ -12,7 +12,7 @@ import { Link,Redirect } from 'react-router-dom';
 import ThemeDefault from '../theme-default';
 
 import styles from './loginStyles'
-import Loading from '../component/loading'
+
 
 class LoginForm extends Component {
 

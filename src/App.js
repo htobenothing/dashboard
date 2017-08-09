@@ -17,7 +17,7 @@ class App extends Component {
 
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>
-
+        
         <Switch>
           <Route path="/" exact component={HomePage}></Route>
           <Route path="/about" component={AboutPage}></Route>

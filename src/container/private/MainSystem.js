@@ -35,8 +35,6 @@ class MainSystem extends Component {
       this.setState({ open: nextProps.width === LARGE })
     }
 
-
-
   }
 
   componentDidMount() {

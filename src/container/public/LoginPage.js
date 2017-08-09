@@ -19,6 +19,7 @@ export class LoginForm extends Component {
           onGoogleLogin={() => this.props.oAuthGoogleLogin()}
         >
         </Login>
+        
         { this.props.auth.isLoading && 
           <Loading></Loading>
         }
