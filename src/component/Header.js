@@ -8,67 +8,89 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { white } from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import ActionAccountCircle from 'material-ui/svg-icons//action/account-circle'
-
-class Header extends Component {
-
-
-  render() {
-    const { styles, handleChangeReqNav } = this.props;
-    const style = {
-      appBar: {
-        position: 'fixed',
-        top: 0,
-        overflow: 'hidden',
-        maxHeight: 57,
-       
-      },
-      menuButton: {
-        marginLeft: 10
-      },
-      iconsRightContainer: {
-        marginLeft: 20
-      }
-    };
-
-    return (
-      <div>
-        <AppBar
-          style={{...styles,...style.appBar}}
-          title="Admin User"
-          iconElementLeft={
-            <IconButton style={style.menuButton} onClick={handleChangeReqNav}>
-              <Menu color={white}></Menu>
-            </IconButton>
-          }
-          iconElementRight={
-            <div style={style.iconsRightContainer}>
-              <IconMenu
-                iconButtonElement={<IconButton><ViewModule color={white}></ViewModule></IconButton>}
-                targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
-                <MenuItem key={1} primaryText="Application 1" />
-                <MenuItem key={2} primaryText="Application 2" />
-                <MenuItem key={3} primaryText="Application 3" />
-                
-              </IconMenu>
-              <IconMenu iconButtonElement={<IconButton><MoreVertIcon color={white}></MoreVertIcon></IconButton>}
-                targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
-
-                <MenuItem onTouchTap={this.props.handleSignOut} primaryText="Sign Out"></MenuItem>
+import Badge from 'material-ui/Badge'
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 
 
-              </IconMenu>
-            </div>
-          }
-        ></AppBar>
-      </div>
-    );
-  }
+
+const Header = (props) => {
+
+
+
+  const { styles, handleChangeReqNav } = props;
+  const style = {
+    appBar: {
+      position: 'fixed',
+      top: 0,
+      overflow: 'hidden',
+      maxHeight: 57,
+
+    },
+    menuButton: {
+      marginLeft: 10
+    },
+    iconsRightContainer: {
+      marginLeft: 20
+    }
+  };
+
+  return (
+    <div>
+      <AppBar
+        style={{ ...styles, ...style.appBar }}
+        title="Admin User"
+        iconElementLeft={
+          <IconButton style={style.menuButton} onClick={handleChangeReqNav}>
+            <Menu color={white}></Menu>
+          </IconButton>
+        }
+        iconElementRight={
+          <div style={style.iconsRightContainer}>
+            <IconMenu
+              iconButtonElement={<IconButton><ViewModule color={white}></ViewModule></IconButton>}
+              targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
+              <MenuItem key={1} primaryText="Application 1" />
+              <MenuItem key={2} primaryText="Application 2" />
+              <MenuItem key={3} primaryText="Application 3" />
+
+            </IconMenu>
+
+            <IconMenu 
+            iconButtonElement={<Badge badgeContent={4} secondary={true} badgeStyle={{ top: 12, right: 4, width: 15, height: 15 }} 
+                                      style={{ width: 20, height: 20, padding: 14 }}>
+                                <NotificationsIcon onClick={props.showMessage} style={{ color: white }} />
+                              </Badge>}
+              targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
+              <MenuItem key={1} primaryText="Message 1" />
+              <MenuItem key={2} primaryText="Message 2" />
+              <MenuItem key={3} primaryText="Message 3" />
+            </IconMenu>
+
+
+
+
+
+
+            <IconMenu iconButtonElement={<IconButton><MoreVertIcon color={white}></MoreVertIcon></IconButton>}
+              targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
+
+              <MenuItem onTouchTap={props.handleSignOut} primaryText="Sign Out"></MenuItem>
+
+
+            </IconMenu>
+          </div>
+        }
+      ></AppBar>
+    </div>
+  );
 }
+
 
 Header.ProperTypes = {
   styles: PropTypes.object,

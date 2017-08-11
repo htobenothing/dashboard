@@ -16,18 +16,7 @@ import Card from 'material-ui/Card'
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 
-let layouts = {
-  // lg: [
-  //   { i: 'post1', x: 0, y: 0, w: 2.5, h: 3, },
-  //   { i: 'post2', x: 1, y: 0, w: 3, h: 2, },
-  //   { i: 'post3', x: 4, y: 0, w: 1, h: 2 }
-  // ],
-  // md: [
-  //   { i: 'post1', x: 0, y: 0, w: 1, h: 2, },
-  //   { i: 'post2', x: 1, y: 0, w: 3, h: 2, },
-  //   { i: 'post3', x: 4, y: 0, w: 1, h: 2 }
-  // ]
-}
+let layouts = {}
 
 
 

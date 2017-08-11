@@ -5,8 +5,10 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
-import store from './reducers/store';
+import store, {history} from './reducers/store';
+
 import { BrowserRouter as Router} from 'react-router-dom'
+import {ConnectedRouter} from 'react-router-redux'
 
 
 injectTapEventPlugin();
@@ -14,9 +16,9 @@ injectTapEventPlugin();
 
 ReactDOM.render((
   <Provider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <App></App>
-    </Router>
+    </ConnectedRouter>
   </Provider>
 ),document.getElementById('root'));
 

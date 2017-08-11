@@ -13,7 +13,7 @@ import GalleryPage from './GalleryPage'
 // import { oAuthSign_Succed } from '../../actions/oAuthSignActions';
 import { SignOut_Start } from '../../actions/authActions'
 import { connect } from 'react-redux'
-
+import ChatPage from './ChatPage'
 
 class MainSystem extends Component {
 
@@ -31,18 +31,10 @@ class MainSystem extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // if (this.props.width !== nextProps.width) {
-    //   this.setState({ open: nextProps.width === LARGE })
-    // }
 
   }
 
   componentDidMount() {
-    // if (!localStorage.getItem('access_token')) {
-    //   let queryString = window.location.hash.substring(1);
-    //   this.props.OAuth_Succed(queryString)
-    // }
-        console.log("auth",this.props.auth)
   }
 
   render() {
@@ -85,6 +77,7 @@ class MainSystem extends Component {
           <div style={styles.container}>
             <Route path={process.env.PUBLIC_URL + "/main" + "/system"} exact component={DashboardPage}></Route>
             <Route path={process.env.PUBLIC_URL + "/main" + "/gallery"} exact component={GalleryPage}></Route>
+            <Route path={process.env.PUBLIC_URL + "/main" + "/chat"} component={ChatPage}></Route>
           </div>
         </div>
 
