@@ -14,7 +14,7 @@ import GalleryPage from './GalleryPage'
 import { SignOut_Start } from '../../actions/authActions'
 import { connect } from 'react-redux'
 import ChatPage from './ChatPage'
-
+import MarkDownPage from './MarkDownPage'
 class MainSystem extends Component {
 
   constructor(props) {
@@ -78,6 +78,7 @@ class MainSystem extends Component {
             <Route path={process.env.PUBLIC_URL + "/main" + "/system"} exact component={DashboardPage}></Route>
             <Route path={process.env.PUBLIC_URL + "/main" + "/gallery"} exact component={GalleryPage}></Route>
             <Route path={process.env.PUBLIC_URL + "/main" + "/chat"} component={ChatPage}></Route>
+            <Route path={process.env.PUBLIC_URL + "/main" + "/markdown"} component={MarkDownPage}/>
           </div>
         </div>
 
