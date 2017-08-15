@@ -13,15 +13,15 @@ import PostTemplate from '../../component/PostTemplate'
 import FlatButton from 'material-ui/FlatButton';
 import { Responsive, WidthProvider, ReactGridLayout } from 'react-grid-layout';
 import Card from 'material-ui/Card'
+import MyEditor from '../../component/MyEditor'
+import MarkDownPage from './MarkDownPage'
+import { Switch, Route,Link} from 'react-router-dom';
+
+
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 
 let layouts = {}
-
-
-
-
-
 
 class GalleryPage extends Component {
 
@@ -30,9 +30,16 @@ class GalleryPage extends Component {
     super(props)
 
     this.state = {
-      isOpenTemplate: false
+      isOpenTemplate: false,
+      editHtml: '',
     }
+    this.handleTextChange = this.handleTextChange.bind(this)
   }
+
+  handleTextChange(html) {
+    this.setState({ editHtml: html })
+  }
+
 
   handleOpen() {
     this.setState({ isOpenTemplate: true })
@@ -51,6 +58,7 @@ class GalleryPage extends Component {
       let y = x * h;
       return { x: x, y: y, w: w, h: h, i: "post" + (i + 1).toString() };
     });
+
   }
 
 
@@ -61,7 +69,7 @@ class GalleryPage extends Component {
     const layouts = {
       lg: this.generateLayout(posts)
     }
-
+   
     console.log(layouts.lg)
 
     const postItems = posts.map((post) => {
@@ -73,7 +81,7 @@ class GalleryPage extends Component {
               title={post.title}
               subtitle={<span>by <b>{post.author} --- {post.date}</b></span>}
               onTouchTap={() => { alert("click post:" + post.id) }}>
-              <img src={post.imageUrl} alt={post.title} style={styles.image}/>
+              <img src={post.imageUrl} alt={post.title} style={styles.image} />
 
             </GridTile>
           </Paper>
@@ -91,19 +99,22 @@ class GalleryPage extends Component {
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
           cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}>
           {postItems}
+
         </ResponsiveReactGridLayout>
 
 
         <PostTemplate
+
           handleClose={this.handleClose.bind(this)}
           handleOpen={this.handleOpen.bind(this)}
           isOpenTemplate={this.state.isOpenTemplate}
         ></PostTemplate>
 
-
+        
         <FloatingActionButton style={styles.floatingAction} secondary={true} onClick={this.handleOpen.bind(this)}>
           <ContentAdd />
         </FloatingActionButton>
+        <Link to={process.env.PUBLIC_URL + "/main"+"/markdown" }>markdown</Link>
       </div>
 
     );
@@ -142,8 +153,8 @@ const styles = {
   },
   paper: {
     padding: 5,
-    width:'100%',
-    height:"100%",
+    width: '100%',
+    height: "100%",
   },
   floatingAction: {
     position: "fixed",
@@ -156,10 +167,10 @@ const styles = {
     width: 100,
     height: 100,
   },
-  image:{
-    width:"100%",
-    height:"100%",
-   
+  image: {
+    width: "100%",
+    height: "100%",
+
   }
 
 };
