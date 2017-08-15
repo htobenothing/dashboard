@@ -59,11 +59,18 @@ const Header = (props) => {
 
             </IconMenu>
 
-            <IconMenu 
-            iconButtonElement={<Badge badgeContent={4} secondary={true} badgeStyle={{ top: 12, right: 4, width: 15, height: 15 }} 
-                                      style={{ width: 20, height: 20, padding: 14 }}>
-                                <NotificationsIcon onClick={props.showMessage} style={{ color: white }} />
-                              </Badge>}
+
+            <IconMenu
+              iconButtonElement={
+                <IconButton style={{ padding: 0 }}>
+                  
+                  <Badge badgeContent={4} secondary={true} badgeStyle={{ top: 8, right: 8, width: 15, height: 15 }}
+                    style={{ cursor: "pointer", padding: 0 }}>
+                    <NotificationsIcon onClick={props.showMessage} style={{ color: white }} />
+                  </Badge>
+                </IconButton>
+              }
+              iconStyle={{padding:12}}
               targetOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
               <MenuItem key={1} primaryText="Message 1" />
@@ -86,7 +93,8 @@ const Header = (props) => {
             </IconMenu>
           </div>
         }
-      ></AppBar>
+      >
+      </AppBar>
     </div>
   );
 }
