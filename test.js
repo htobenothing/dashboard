@@ -15,15 +15,3 @@
 
         </ResponsiveReactGridLayout>
 
-
-        <PostTemplate
-          handleClose={this.handleClose.bind(this)}
-          handleOpen={this.handleOpen.bind(this)}
-          isOpenTemplate={this.state.isOpenTemplate}
-        ></PostTemplate>
-
-
-        <FloatingActionButton style={styles.floatingAction} secondary={true} onClick={this.handleOpen.bind(this)}>
-          <ContentAdd />
-        </FloatingActionButton>
-      </div>
