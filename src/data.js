@@ -22,7 +22,18 @@ const data = {
     { id: "post2", imageUrl: "http://images.all-free-download.com/images/graphiclarge/beautiful_scenery_05_hd_picture_166257.jpg", title: "Best Gift2", author: "James2", date: "2016-05-04", breifInfo: "ListeningStateChangedEvent" },
     { id: "post3", imageUrl: "http://images.all-free-download.com/images/graphiclarge/beautiful_scenery_05_hd_picture_166257.jpg", title: "Best Gift3", author: "James3", date: "2016-05-04", breifInfo: "ListeningStateChangedEvent" },
   ]
-
+  
+  
 }
+export const initText = `# Mark Down in Browser
+
+Enjoy your life in markdown, focus on your thought. 
+
+Make lif easy and comfortable, be a person to always getting better
+
+-----
+Thanks for the:
+1. [react-codemirror](https://github.com/JedWatson/react-codemirror):Codemirror Component for React.js
+2. [react-markdown](https://github.com/rexxars/react-markdown):Render Markdown as React components `
 
 export default data
