@@ -8,6 +8,7 @@ import Paper from 'material-ui/Paper'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
 
+
 const PostTemplacte = (props) => {
 
   const styles = {
@@ -54,7 +55,7 @@ const PostTemplacte = (props) => {
         floatingLabelText="Title" />
 
       <DatePicker hintText="Birth Date" />
-
+      
       The actions in this window were passed in as an array of React objects.
     </Dialog>
 
