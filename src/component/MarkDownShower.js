@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-const MarkDownShower = (props) => {
+const MarkDownShower = (props)=>{
   
-  return (
-    <div>
-      <div>
-        <ReactMarkdown source={props.input} className='ReactMarkdown'/>
-      </div>
-    </div>
-  );
+  return(
+    <ReactMarkdown
+      source={props.input}
+      className='ReactMarkdown'
+      >
 
+    </ReactMarkdown>
+  )
 }
+
+
+
+
 
 export default MarkDownShower;

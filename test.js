@@ -15,3 +15,26 @@
 
         </ResponsiveReactGridLayout>
 
+        <img src={post.imageUrl} alt={post.title} style={styles.image} />
+
+
+        <div style={styles.code}>
+        <MyCodeMirror ref="editor"
+          code={this.props.postR.post.Content}
+          updateCode={(newcode) => this.handleUpdateCode(newcode)}
+          width='100%'
+          height='100%'
+        ></MyCodeMirror>
+      </div>
+
+
+
+      <div style={styles.result}>
+        <MarkDownShower
+          input={this.state.text}
+        ></MarkDownShower>
+      </div>
+
+
+
+

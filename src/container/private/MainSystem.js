@@ -8,13 +8,14 @@ import ThemeDefault from '../../theme-default'
 import Data from '../../data'
 import { Route } from 'react-router-dom';
 import DashboardPage from './DashboardPage';
-import GalleryPage from './GalleryPage'
+import PostListPage from './PostListPage'
 // import { getParamsFromURL } from '../../utils/params2Str';
 // import { oAuthSign_Succed } from '../../actions/oAuthSignActions';
 import { SignOut_Start } from '../../actions/authActions'
 import { connect } from 'react-redux'
 import ChatPage from './ChatPage'
-import MarkDownPage from './MarkDownPage'
+import EditPostPage from './EditPostPage'
+import CreatePostPage from './CreatePostPage'
 class MainSystem extends Component {
 
   constructor(props) {
@@ -76,12 +77,12 @@ class MainSystem extends Component {
 
           <div style={styles.container}>
             <Route path={process.env.PUBLIC_URL + "/main" + "/system"} exact component={DashboardPage}></Route>
-            <Route path={process.env.PUBLIC_URL + "/main" + "/gallery"} exact component={GalleryPage}></Route>
+            <Route path={process.env.PUBLIC_URL + "/main" + "/posts/"} exact component={PostListPage}></Route>
             <Route path={process.env.PUBLIC_URL + "/main" + "/chat"} component={ChatPage}></Route>
-            <Route path={process.env.PUBLIC_URL + "/main" + "/markdown"} component={MarkDownPage}/>
+            <Route path={process.env.PUBLIC_URL + "/main" + "/markdown/:id"} component={EditPostPage} />
+            <Route path={process.env.PUBLIC_URL + "/main" + "/markdown/"} exact component={CreatePostPage} />
           </div>
         </div>
-
 
       </MuiThemeProvider>
     )

@@ -9,7 +9,7 @@ const data = {
   username: "Albert Ho",
   menus: [
     { text: 'DashBoard', icon: <Assessment />, link: main + "/system" },
-    { text: 'Gallery', icon: <Web />, link: main + '/gallery' },
+    { text: 'Posts', icon: <Web />, link: main + '/posts/' },
     { text: 'Form Page', icon: <Web />, link: main + '/form' },
 
     { text: 'Table Page', icon: <GridOn />, link: main + '/table' },
