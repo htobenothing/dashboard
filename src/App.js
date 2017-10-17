@@ -10,7 +10,7 @@ import LoginPage from './container/public/LoginPage';
 import MainSystem from './container/private/MainSystem';
 import AboutPage from './container/public/AboutPage'
 import HomePage from './container/public/HomePage'
-
+import NotFindPage from './container/public/NotFindPage'
 class App extends Component {
 
   render() {
@@ -22,7 +22,8 @@ class App extends Component {
           <Route path="/" exact component={HomePage}></Route>
           <Route path="/about" component={AboutPage}></Route>
           <Route path="/login" component={LoginPage}></Route>
-          <Route path="/main" component={MainSystem}></Route>
+          <Route path="/main/" component={MainSystem}></Route>
+          <Route component={NotFindPage}></Route>
         </Switch>
 
       </MuiThemeProvider>
@@ -40,5 +41,4 @@ App.PropTypes = {
 
 export default withWidth()(App);
 
-            // <Route path={process.env.PUBLIC_URL+"/"} exact component={LoginPage} ></Route>
-            // <Route path={process.env.PUBLIC_URL+"/system"} component={MainSystem}></Route>
+<Route component={NotFindPage}/>

@@ -76,7 +76,7 @@ class PostListPage extends Component {
           <li style={styles.post}>
             <h1>{"post" + post.Post_ID}</h1>
             <p>by {post.Author} --- { new Date(post.Create_Date).toLocaleDateString("en-us")}</p>
-            <Link to={"/main/markdown/" + post.Post_ID}>Edit</Link>
+            <Link to={"/main/posts/" + post.Post_ID}>Edit</Link>
 
           </li>
         </Paper>
@@ -93,7 +93,7 @@ class PostListPage extends Component {
 
 
         <FloatingActionButton style={styles.floatingAction} secondary={true}
-          containerElement={<Link to="/main/markdown/"></Link>}
+          containerElement={<Link to="/main/post/"></Link>}
         >
           <ContentAdd />
         </FloatingActionButton>

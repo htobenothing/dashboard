@@ -5,7 +5,7 @@ import axios from 'axios'
 import { getParamsFromURL } from '../utils/params2Str'
 import { redirectTo } from '../actions/routerAction'
 import gapi from '../utils/gapi'
-import store from '../reducers/store'
+import store,{history} from '../reducers/store'
 
 
 var GoogleAuth;
@@ -57,21 +57,14 @@ function initClient() {
       imageUrl: profile.getImageUrl()
     }
     store.dispatch({ type: LOGIN_SUCCED, payload: user })
-    store.dispatch(redirectTo("/main/dashboard"))
+    // store.dispatch()
+    console.log("dispatching")
+    history.push("/main")
 
   }, (err) => {
     console.log(err)
   })
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -88,7 +81,8 @@ export function oAuthSign_Succed(queryString) {
       localStorage.setItem(key, params[key])
     }
     dispatch({ type: LOGIN_SUCCED, payload: "" })
-    dispatch(redirectTo("/main/dasboard"))
+    // history.push("/main/dashboard")
+    dispatch(redirectTo("/main/system"))
   }
 
 

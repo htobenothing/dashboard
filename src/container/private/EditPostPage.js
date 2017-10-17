@@ -61,7 +61,7 @@ class EditoPostPage extends Component {
       message = "Update Failed"
     }
 
-    console.log("rendering")
+
 
     return (
       <div >

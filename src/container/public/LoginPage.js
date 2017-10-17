@@ -33,13 +33,7 @@ export class LoginForm extends Component {
           </Login>
         </div>
 
-
-
-
       </div>
-
-
-
     );
   }
 }

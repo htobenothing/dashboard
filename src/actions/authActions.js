@@ -4,6 +4,8 @@ import { redirectTo } from './routerAction'
 import React from 'react'
 import ApiUtils from '../utils/apiUtils'
 import axios from 'axios'
+import {history} from '../reducers/store'
+
 export function Login_Submitted(creds) {
 
 
@@ -15,7 +17,9 @@ export function Login_Submitted(creds) {
           dispatch(Login_Succed(creds))
           localStorage.setItem('access_token',resp.token)
 
+          console.log('respdata',resp)
           // dispatch(redirectTo("/main/dasboard"))
+          history.push("/main")
         })
         .catch(err=>{
           dispatch(Login_Failed(err))
@@ -43,7 +47,7 @@ export function SignOut_Start(){
     if (!localStorage.getItem("access_token")){
 
       dispatch(SignOut_Succed())
-      window.location = "/login"
+      
     }else{
       dispatch(SignOut_Failed())
     }
@@ -60,3 +64,6 @@ export function SignOut_Failed(){
   return ({type:C.SIGNOUT_FAILED})
 }
 
+export function NotAuthorized(event){
+  return( {type:C.NOTAUTHORIZED, payload:event})
+}

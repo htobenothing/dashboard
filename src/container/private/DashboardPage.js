@@ -98,7 +98,7 @@ class DashboardPage extends Component {
               
               title={"Hello"}
               subtitle={<span>by <b>{post.Author} --- {post.Date}</b></span>}
-              containerElement={<Link to={"/main/markdown/"+post.Post_ID} ></Link>}
+              containerElement={<Link to={"/main/posts/"+post.Post_ID} ></Link>}
               >
 
             </GridTile>

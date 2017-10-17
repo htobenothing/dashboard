@@ -54,10 +54,18 @@ export function Create_Post_Failed(err){
 
 // fetch post
 export function Fetch_Post_Start(id) {
-
+  let option={
+    method:"get",
+    url:postEndPoint+id,
+    header:{
+      'Authorization':'',
+      'Content-Type':"application/json"
+    },
+    json:true
+  }
   return dispatch => {
     dispatch({type:FETCH_POST_START})
-    axios.get(postEndPoint+id)
+    axios(option)
       .then((resp) => {
         
         dispatch(Fetch_Post_Succed(resp.data))

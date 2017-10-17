@@ -38,3 +38,4 @@
 
 
 
+      <Route path="/main" component={MainSystem}></Route>

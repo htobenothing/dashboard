@@ -59,9 +59,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    if(this.props.isRedirect){
-      return <Redirect to="/main"></Redirect>
-    }
+
 
     return (
       <MuiThemeProvider muiTheme={ThemeDefault}>

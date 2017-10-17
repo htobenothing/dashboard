@@ -8,7 +8,7 @@ import PostReducer from './postReducer'
 const reducer = combineReducers({
   user:UserReducer,
   auth:AuthReducer,
-  routing:RouterReducer,
+  // routing:RouterReducer,
   router:routerReducer,
   post : PostReducer,
 })

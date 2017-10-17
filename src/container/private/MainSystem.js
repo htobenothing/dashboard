@@ -6,7 +6,7 @@ import withWidth, { LARGE } from 'material-ui/utils/withWidth';
 import PropTypes from 'prop-types';
 import ThemeDefault from '../../theme-default'
 import Data from '../../data'
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import DashboardPage from './DashboardPage';
 import PostListPage from './PostListPage'
 // import { getParamsFromURL } from '../../utils/params2Str';
@@ -16,6 +16,9 @@ import { connect } from 'react-redux'
 import ChatPage from './ChatPage'
 import EditPostPage from './EditPostPage'
 import CreatePostPage from './CreatePostPage'
+import Authorization from '../public/auth'
+
+
 class MainSystem extends Component {
 
   constructor(props) {
@@ -76,11 +79,13 @@ class MainSystem extends Component {
           </LeftDrawer>
 
           <div style={styles.container}>
-            <Route path={process.env.PUBLIC_URL + "/main" + "/system"} exact component={DashboardPage}></Route>
-            <Route path={process.env.PUBLIC_URL + "/main" + "/posts/"} exact component={PostListPage}></Route>
-            <Route path={process.env.PUBLIC_URL + "/main" + "/chat"} component={ChatPage}></Route>
-            <Route path={process.env.PUBLIC_URL + "/main" + "/markdown/:id"} component={EditPostPage} />
-            <Route path={process.env.PUBLIC_URL + "/main" + "/markdown/"} exact component={CreatePostPage} />
+            <Switch>
+              <Route path={"/main/"} exact component={DashboardPage}></Route>
+              <Route path={"/main/posts"} exact  component={User(PostListPage)}></Route>
+              <Route path={"/main/chat"} exact component={User(ChatPage)}></Route>
+              <Route path={"/main/posts/:id"} exact component={User(EditPostPage)} />
+              <Route path={"/main/post"} exact component={User(CreatePostPage)} />
+            </Switch>
           </div>
         </div>
 
@@ -88,6 +93,13 @@ class MainSystem extends Component {
     )
   }
 }
+
+
+const User = Authorization(['user', 'manager', 'admin'])
+const Manager = Authorization(['manager', 'admin'])
+const Admin = Authorization(['admin'])
+
+
 
 MainSystem.PropTypes = {
   children: PropTypes.element,

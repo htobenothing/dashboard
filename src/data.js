@@ -8,8 +8,8 @@ const main = process.env.PUBLIC_URL + "/main";
 const data = {
   username: "Albert Ho",
   menus: [
-    { text: 'DashBoard', icon: <Assessment />, link: main + "/system" },
-    { text: 'Posts', icon: <Web />, link: main + '/posts/' },
+    { text: 'DashBoard', icon: <Assessment />, link: main  },
+    { text: 'Posts', icon: <Web />, link: main + '/posts' },
     { text: 'Form Page', icon: <Web />, link: main + '/form' },
 
     { text: 'Table Page', icon: <GridOn />, link: main + '/table' },
