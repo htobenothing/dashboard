@@ -47,7 +47,7 @@ export function SignOut_Start(){
     if (!localStorage.getItem("access_token")){
 
       dispatch(SignOut_Succed())
-      
+      history.push("/login")
     }else{
       dispatch(SignOut_Failed())
     }

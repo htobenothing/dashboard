@@ -1,11 +1,19 @@
+/* global gapi */
 import { LOGIN_SUBMITTED, LOGIN_SUCCED, LOGIN_FAILED } from './constants'
 import { GoogleOAuth } from "./constants"
 import { convertParamsToStr } from '../utils/params2Str'
 import axios from 'axios'
 import { getParamsFromURL } from '../utils/params2Str'
 import { redirectTo } from '../actions/routerAction'
-import gapi from '../utils/gapi'
+// import gapi from '../utils/gapi'
 import store,{history} from '../reducers/store'
+
+
+// const script = document.createElement("script");
+// script.src = "https://apis.google.com/js/client.js"
+// script.onload =()=>{
+//   document.body.appendChild(script)
+// }
 
 
 var GoogleAuth;

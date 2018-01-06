@@ -15,6 +15,7 @@ const data = {
     { text: 'Table Page', icon: <GridOn />, link: main + '/table' },
     { text: 'Login Page', icon: <PermIdentity />, link: main + '/login' },
     { text: 'Chat Room', icon: <PermIdentity />, link: main + '/chat' },
+    
   ],
 
   posts: [
