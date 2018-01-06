@@ -26,7 +26,7 @@ export const NOTAUTHORIZED = "NOTAUTHORIZED"
 
 
 
-const rootApi= "http://0.0.0.0:8001/api"
+const rootApi= "http://192.168.0.113:8001/api"
 export const DEFAULT_ENDPOINT={
   rootApi:      rootApi,
   authenToken:  rootApi+"/token-auth/",  
